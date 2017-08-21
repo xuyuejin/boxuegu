@@ -4,7 +4,7 @@
 require.config({
     baseUrl:"/public/",
     paths:{
-      template:"assets/artTemplate/template",
+      template:"assets/artTemplate/template-web",
       jquery:"assets/jquery/jquery",
       bootstrap:"assets/bootstrap/js/bootstrap",
       cookie:"assets/jquery-cookie/jquery.cookie",

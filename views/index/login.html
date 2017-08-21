@@ -10,7 +10,7 @@
     <div class="login">
         <div class="login-wrap">
             <div class="avatar">
-                <img src="./uploads/monkey.png" class="img-circle" alt="">
+                <img src="./uploads/bt.jpg" class="img-circle" alt="">
             </div>
             <form action="" class="col-md-offset-1 col-md-10">
                 <div class="input-group input-group-lg">
@@ -30,7 +30,8 @@
         </div>
     </div>
     <!--引入公共的js文件-->
-    <?php include '/views/common/js.html';?>
+    <script src="/public/js/common/require.js"></script>
+    <script src="/public/js/common/config.js"></script>
     <!--引入对应的页面完成自身功能的js文件-->
     <script>
         require(["js/index/login"]);
