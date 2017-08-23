@@ -26,7 +26,6 @@ define(["jquery", "template", "bootstrap"], function ($, template) {
         data: {tc_id: tc_id},
         dataType: "json",
         success: function (info) {
-          console.log(1)
           if (info.code == 200) {
             var html = template("Modal_tpl", info.result);
             $("#teacherModal").html(html).modal('show');

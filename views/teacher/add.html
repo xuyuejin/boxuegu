@@ -1,76 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>学IT - 后台管理系统</title>
-    <?php include '/views/common/css.html'; ?>
+  <meta charset="UTF-8">
+  <title>学IT - 后台管理系统</title>
+  <?php include '/views/common/css.html'; ?>
 </head>
 <body>
-    
-    <!-- 侧边栏 -->
-    <?php include '/views/common/aside.html'; ?>
-    <!-- 主体 -->
-    <div class="main">
-        <div class="container-fluid">
-            <!-- 头部 -->
-            <?php include '/views/common/header.html'; ?>
-            <div class="body teacher">
-                <!-- 面包屑 -->
-                <ol class="breadcrumb">
-                    <li><a href="javascript:;">讲师管理</a></li>
-                    <li class="active">讲师添加</li>
-                </ol>
-                <div class="teacher-add">
-                    <form action="" class="form-horizontal col-md-offset-2">
-                        <div class="form-group">
-                            <label for="" class="col-md-3 control-label">姓名</label>
-                            <div class="col-md-4">
-                                <input type="text" class="form-control input-sm" placeholder="讲师名称">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="" class="col-md-3 control-label">密码</label>
-                            <div class="col-md-4">
-                                <input type="password" class="form-control input-sm">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="" class="col-md-3 control-label">入职时间</label>
-                            <div class="col-md-4">
-                                <input type="text" class="form-control input-sm">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="" class="col-md-3 control-label">类型</label>
-                            <div class="col-md-2">
-                                <select name="" class="form-control input-sm">
-                                    <option value="">讲师</option>
-                                    <option value="">管理员</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="" class="col-md-3 control-label">性别</label>
-                            <div class="col-md-4">
-                                <label class="radio-inline">
-                                    <input type="radio" checked> 男
-                                </label>
-                                <label class="radio-inline">
-                                    <input type="radio"> 女
-                                </label>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-md-7">
-                                <a href="/advert/list" class="btn btn-success btn-sm pull-right"> 添 加 </a>
-                            </div>                          
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
 
-    <?php include '/views/common/js.html'; ?>
+<!-- 侧边栏 -->
+<?php include '/views/common/aside.html'; ?>
+<!-- 主体 -->
+<div class="main">
+  <div class="container-fluid">
+    <!-- 头部 -->
+    <?php include '/views/common/header.html'; ?>
+    <div class="body teacher teacher_edit">
+      <!-- 面包屑 -->
+      <!--挖了一个坑-->
+    </div>
+  </div>
+</div>
+
+<?php include '/views/common/js.html'; ?>
+<script type="text/html" id="teacher_add_tpl">
+  <ol class="breadcrumb">
+    <li><a href="javascript:;">讲师管理</a></li>
+    {{if tc_id}}
+    <li class="active">{{title}}</li>
+    {{else}}
+    <li class="active">{{title}}</li>
+    {{/if}}
+  </ol>
+  <div class="teacher-add">
+    <form action="" class="form-horizontal col-md-offset-2">
+      <div class="form-group">
+        <label class="col-md-3 control-label">姓名</label>
+        <div class="col-md-4">
+          <input type="text" class="form-control input-sm" placeholder="讲师名称" name="tc_name" value="{{tc_name}}">
+        </div>
+      </div>
+      <input type="hidden" name="tc_id" value="{{tc_id}}">
+      {{if !tc_id}}
+      <div class="form-group">
+        <label class="col-md-3 control-label">密码</label>
+        <div class="col-md-4">
+          <input type="password" class="form-control input-sm" name="tc_pass">
+        </div>
+      </div>
+      {{/if}}
+      
+      <div class="form-group">
+        <label class="col-md-3 control-label">入职时间</label>
+        <div class="col-md-4">
+          <input type="text" class="form-control input-sm datepicker" name="tc_join_date" value="{{tc_join_date}}">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-md-3 control-label">类型</label>
+        <div class="col-md-2">
+          <select  class="form-control input-sm" name="tc_type">
+            <option value="1" {{if tc_type=="1"}}selected{{/if}}>讲师</option>
+            <option value="0" {{if tc_type=="0"}}selected{{/if}}>管理员</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-md-3 control-label">性别</label>
+        <div class="col-md-4">
+          <label class="radio-inline">
+            <input type="radio" value="0" name="tc_gender" {{if tc_gender=="0"}}checked{{/if}}> 男
+          </label>
+          <label class="radio-inline">
+            <input type="radio" value="1" name="tc_gender" {{if tc_gender=="1"}}checked{{/if}}> 女
+          </label>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-md-7">
+          {{if tc_id}}
+          <a href="/teacher/list" class="btn btn-success btn-sm pull-right info_save">{{btntext}}</a>
+          {{else}}
+          <a href="/teacher/list" class="btn btn-success btn-sm pull-right info_save">{{btntext}}</a>
+          {{/if}}
+        </div>
+      </div>
+    </form>
+  </div>
+</script>
+<script>
+  require(["js/teacher/add"]);
+</script>
 </body>
 </html>

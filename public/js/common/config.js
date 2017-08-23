@@ -8,10 +8,21 @@ require.config({
       jquery:"assets/jquery/jquery",
       bootstrap:"assets/bootstrap/js/bootstrap",
       cookie:"assets/jquery-cookie/jquery.cookie",
-      form:"assets/jquery-form/jquery.form"
+      form:"assets/jquery-form/jquery.form",
+      tool:"js/common/tool",
+      datepicker:"assets/bootstrap-datepicker/js/bootstrap-datepicker.min",
+      datepickerzh_CN:"assets/bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.min",
+      nprogress:"assets/nprogress/nprogress",
+      uploadify:"assets/uploadify/jquery.uploadify"
     },
     shim:{
       bootstrap:{
+        deps:["jquery"]
+      },
+      datepickerzh_CN:{
+        deps:["jquery"]
+      },
+      uploadify:{
         deps:["jquery"]
       }
     }
