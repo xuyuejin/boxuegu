@@ -13,7 +13,9 @@ require.config({
       datepicker:"assets/bootstrap-datepicker/js/bootstrap-datepicker.min",
       datepickerzh_CN:"assets/bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.min",
       nprogress:"assets/nprogress/nprogress",
-      uploadify:"assets/uploadify/jquery.uploadify"
+      uploadify:"assets/uploadify/jquery.uploadify",
+      region:"assets/jquery-region/jquery.region",
+      ckeditor:"assets/ckeditor/ckeditor"
     },
     shim:{
       bootstrap:{
@@ -24,6 +26,9 @@ require.config({
       },
       uploadify:{
         deps:["jquery"]
+      },
+      ckeditor:{
+        exports:"CKEDITOR"
       }
     }
 }

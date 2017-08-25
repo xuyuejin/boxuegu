@@ -1,7 +1,7 @@
 /**
  * Created by lenovo on 2017/8/22.
  */
-define(["jquery", "template", "tool", "datepicker", "datepickerzh_CN"], function ($, template, tool) {
+define(["jquery", "template", "tool"], function ($, template, tool) {
   $(function () {
     var tc_id = tool.getlink("tc_id");
     console.log(tc_id);
@@ -18,14 +18,7 @@ define(["jquery", "template", "tool", "datepicker", "datepickerzh_CN"], function
           var html = template("teacher_add_tpl", info.result)
           $(".teacher_edit").html(html);
           //添加日期插件
-          $('.datepicker').datepicker({
-            format: 'yyyy-mm-dd',//修改日期格式
-            todayBtn: true,//显示今天按钮
-            endDate: "+0d",//限定选取范围
-            language: 'zh-CN',//修改显示语言，引用js文件
-            autoclose: true,//选取后自动关闭
-            todayHighlight:true
-          });
+          tool.datepicker('.datepicker');
         }
       })
     } else {
@@ -33,14 +26,7 @@ define(["jquery", "template", "tool", "datepicker", "datepickerzh_CN"], function
       $(".teacher_edit").html(html);
       console.log("增加")
       //添加日期插件
-      $('.datepicker').datepicker({
-        format: 'yyyy-mm-dd',//修改日期格式
-        todayBtn: true,//显示今天按钮
-        endDate: "+0d",//限定选取范围
-        language: 'zh-CN',//修改显示语言，引用js文件
-        autoclose: true,//选取后自动关闭
-        todayHighlight:true
-      });
+      tool.datepicker('.datepicker');
     }
     ;
     $("body").on("click", ".info_save", function () {

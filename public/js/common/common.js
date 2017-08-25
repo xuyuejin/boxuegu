@@ -35,6 +35,7 @@ define(["jquery", "template","nprogress", "cookie", "bootstrap"], function ($, t
     var pathObj = {
       "/teacher/add": "/teacher/list",
       "/settings": "/",
+      "/category/add":"/category/list"
     }
     pathname = pathObj[pathname] || pathname;
     
